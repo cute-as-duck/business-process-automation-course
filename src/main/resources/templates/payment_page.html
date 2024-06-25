@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+<div th:insert="~{fragments/navbar::navigation}"></div>
+<form th:action="@{|/makePayment/${course.courseName}|}" method="post" th:object="${paymentRequest}" class="login-form">
+    <h3>Payment</h3>
+    <p th:text="|Course fee: ${course.courseFee}|"></p>
+    <input name="cardNumber" type="text" placeholder="Card number" class="form-row">
+    <input type="submit" value="Pay" class="custom-button">
+</form>
+</body>
+</html>

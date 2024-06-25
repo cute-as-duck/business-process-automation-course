@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<div th:insert="~{fragments/navbar::navigation}"></div>
+<script th:if="${alreadyRegistered}" th:inline="javascript">
+    alert("You have already registered for this course.")
+</script>
+<h1>Learning Center</h1>
+<h1>Courses</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Course</th>
+        <th>Fee</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="course : ${courses}">
+        <tr>
+            <td th:text="${course.id}"></td>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.courseFee}"></td>
+            <td><button class="custom-button"><a th:href="@{|/payment/${course.courseName}|}">Enroll</a></button></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<form method="post" action="/">
+</form>
+</body>
+</html>
